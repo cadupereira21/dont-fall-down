@@ -1,6 +1,6 @@
 using UnityEngine;
 
-namespace Course_Library.Scripts.Game_Scene {
+namespace Game_Scene {
     public class PlayerAudioManager : MonoBehaviour {
         [SerializeField] private AudioClip powerUpSfx;
 

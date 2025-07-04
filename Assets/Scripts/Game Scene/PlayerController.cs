@@ -1,17 +1,17 @@
-using System;
 using System.Collections;
 using System.Linq;
+using Game_Scene.Buffs;
 using UnityEngine;
 
-namespace Course_Library.Scripts.Game_Scene {
+namespace Game_Scene {
     public class PlayerController : MonoBehaviour {
-        private const string TagPowerUp = "PowerUp";
+        private const string TAG_POWER_UP = "PowerUp";
 
-        private const string TagEnemy = "Enemy";
+        private const string TAG_ENEMY = "Enemy";
 
-        private const string VerticalAxis = "Vertical";
+        private const string VERTICAL_AXIS = "Vertical";
 
-        private const string CameraFocalPoint = "CameraFocalPoint";
+        private const string CAMERA_FOCAL_POINT = "CameraFocalPoint";
 
         [SerializeField] private GameObject powerUpIndicator;
 
@@ -28,7 +28,7 @@ namespace Course_Library.Scripts.Game_Scene {
         private bool _hasPowerUp;
 
         private void Awake() {
-            _focalPoint = GameObject.Find(CameraFocalPoint);
+            _focalPoint = GameObject.Find(CAMERA_FOCAL_POINT);
         }
 
         private void Start() {
@@ -37,14 +37,14 @@ namespace Course_Library.Scripts.Game_Scene {
         }
 
         private void Update() {
-            float verticalInput = Input.GetAxis(VerticalAxis);
+            float verticalInput = Input.GetAxis(VERTICAL_AXIS);
 
             _playerRb.AddForce(_focalPoint.transform.forward * (verticalInput * this.playerSpeed * Time.deltaTime),
                                ForceMode.Force);
         }
 
         private void OnTriggerEnter(Collider other) {
-            if (!other.gameObject.CompareTag(TagPowerUp)) return;
+            if (!other.gameObject.CompareTag(TAG_POWER_UP)) return;
             _playerAudioManager.PlayPowerUpSound();
             
             if (_hasPowerUp) {
@@ -61,15 +61,15 @@ namespace Course_Library.Scripts.Game_Scene {
         }
 
         private void OnCollisionEnter(Collision other) {
-            if (other.gameObject.CompareTag(TagEnemy)) {
-                _playerAudioManager.PlayBumpSound();
-                if (!_hasPowerUp) return;
-                var enemyRb = other.gameObject.GetComponent<Rigidbody>();
-                var awayFromPlayer = (other.transform.position - this.transform.position).normalized;
+            if (!other.gameObject.CompareTag(TAG_ENEMY)) return;
+            
+            _playerAudioManager.PlayBumpSound();
+            if (!_hasPowerUp) return;
+            Rigidbody enemyRb = other.gameObject.GetComponent<Rigidbody>();
+            Vector3 awayFromPlayer = (other.transform.position - this.transform.position).normalized;
 
-                enemyRb.AddForce(awayFromPlayer * ((KnockbackPowerUp)this._powerUp).GetKnockBackStrength,
-                                 ForceMode.Impulse);
-            }
+            enemyRb.AddForce(awayFromPlayer * ((KnockbackPowerUp)this._powerUp).GetKnockBackStrength,
+                             ForceMode.Impulse);
         }
 
         private IEnumerator PowerUpCountdownRoutine() {

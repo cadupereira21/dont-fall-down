@@ -1,16 +1,19 @@
+using Game_Scene.ObjectPooling;
 using UnityEngine;
 
-namespace Course_Library.Scripts.Game_Scene {
-    public class EnemyController : PooledObject {
+namespace Game_Scene.Enemy {
+    public class Enemy : PooledObject {
         private GameObject _player;
 
         private Rigidbody _enemyRb;
+        
+        private int _indexAtPooler;
 
         public float enemySpeed;
 
-        public void Init(GameObject player, ObjectPooler pooler, int indexAtPooler) {
+        public void Init(GameObject player, SpawnManager spawnManager, int indexAtPooler) {
             _player = player;
-            base.Init(pooler, indexAtPooler);
+            base.Init(spawnManager, indexAtPooler);
         }
 
         private void Awake() {
@@ -26,7 +29,7 @@ namespace Course_Library.Scripts.Game_Scene {
         
         private void DestroyPlayerIfOutOfBounds() {
             if (this.transform.position.y < -10) {
-                this._pooler.InactivateObject(_indexAtPooler);
+                this.SpawnManager.DespawnObject(_indexAtPooler);
             }
         }
     }

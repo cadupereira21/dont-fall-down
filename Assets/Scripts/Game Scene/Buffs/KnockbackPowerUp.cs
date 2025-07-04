@@ -1,7 +1,8 @@
-﻿using UnityEngine;
+﻿using Course_Library.Scripts;
+using UnityEngine;
 using UnityEngine.Serialization;
 
-namespace Course_Library.Scripts {
+namespace Game_Scene.Buffs {
     public class KnockbackPowerUp : PowerUp {
         [FormerlySerializedAs("knockBackStrength")] [SerializeField] private float getKnockBackStrength;
 

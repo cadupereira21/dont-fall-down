@@ -1,16 +1,14 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
-public class CameraController : MonoBehaviour
-{
-    public float rotationSpeed;
+namespace Game_Scene {
+    public class CameraController : MonoBehaviour {
+        public float rotationSpeed;
 
-    // Update is called once per frame
-    void Update()
-    {
-        float horizontalInput = Input.GetAxis("Horizontal");
+        // Update is called once per frame
+        private void Update() {
+            float horizontalInput = Input.GetAxis("Horizontal");
 
-        transform.Rotate(Vector3.up, -horizontalInput * rotationSpeed * Time.deltaTime);
+            this.transform.Rotate(Vector3.up, -horizontalInput * rotationSpeed * Time.deltaTime);
+        }
     }
 }

@@ -1,7 +1,7 @@
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-namespace Course_Library.Scripts.Game_Scene {
+namespace Game_Scene {
     public enum GameState {
         PLAYING,
         PAUSED,
@@ -9,38 +9,38 @@ namespace Course_Library.Scripts.Game_Scene {
     }
 
     public class GameStateManager : MonoBehaviour {
-        public static GameStateManager instance { get; private set; }
+        public static GameStateManager Instance { get; private set; }
 
         public void Awake() {
-            instance = this;
+            Instance = this;
             Time.timeScale = 1;
         }
 
-        public GameState currentGameState { get; private set; } = GameState.PLAYING;
+        public GameState CurrentGameState { get; private set; } = GameState.PLAYING;
 
         public void Pause() {
-            if (currentGameState != GameState.PLAYING) return;
+            if (CurrentGameState != GameState.PLAYING) return;
             Time.timeScale = 0;
-            currentGameState = GameState.PAUSED;
+            CurrentGameState = GameState.PAUSED;
         }
 
         public void Resume() {
-            if (currentGameState != GameState.PAUSED) return;
+            if (CurrentGameState != GameState.PAUSED) return;
             Time.timeScale = 1;
-            currentGameState = GameState.PLAYING;
+            CurrentGameState = GameState.PLAYING;
         }
 
         public void Restart() {
-            if (currentGameState is not (GameState.PAUSED or GameState.GAME_OVER)) return;
+            if (CurrentGameState is not (GameState.PAUSED or GameState.GAME_OVER)) return;
             SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
-            currentGameState = GameState.PLAYING;
+            CurrentGameState = GameState.PLAYING;
             Time.timeScale = 1;
         }
 
         public void GameOver() {
-            if (currentGameState != GameState.PLAYING) return;
+            if (CurrentGameState != GameState.PLAYING) return;
             Time.timeScale = 0;
-            currentGameState = GameState.GAME_OVER;
+            CurrentGameState = GameState.GAME_OVER;
         }
     }
 }

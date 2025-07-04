@@ -1,6 +1,6 @@
 using UnityEngine;
 
-namespace Course_Library.Scripts {
+namespace Game_Scene.Buffs {
     public class PowerUpIndicator : MonoBehaviour {
         [SerializeField] private Transform playerTransform;
 

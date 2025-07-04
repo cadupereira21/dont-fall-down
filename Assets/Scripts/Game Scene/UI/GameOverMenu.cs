@@ -1,5 +1,5 @@
 using System;
-using Course_Library.Scripts.Game_Scene;
+using Game_Scene;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.Serialization;
@@ -18,13 +18,13 @@ namespace Course_Library.Scripts {
 
         private void Update() {
             if (!(playerTransform.position.y < -10)) return;
-            GameStateManager.instance.GameOver();
+            GameStateManager.Instance.GameOver();
             gameCanvas.SetActive(false);
             gameOverCanvas.SetActive(true);
         }
 
         public void Restart() {
-            GameStateManager.instance.Restart();
+            GameStateManager.Instance.Restart();
         }
     }
 }

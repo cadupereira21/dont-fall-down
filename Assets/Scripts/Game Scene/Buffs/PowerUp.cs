@@ -1,8 +1,6 @@
-using System;
-using Unity.VisualScripting;
 using UnityEngine;
 
-namespace Course_Library.Scripts {
+namespace Game_Scene.Buffs {
     public abstract class PowerUp : MonoBehaviour {
         private const string TagPlayer = "Player";
         
