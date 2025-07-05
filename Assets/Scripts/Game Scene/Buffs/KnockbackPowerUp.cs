@@ -1,5 +1,4 @@
-﻿using Course_Library.Scripts;
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.Serialization;
 
 namespace Game_Scene.Buffs {

@@ -1,37 +1,13 @@
-using System;
-using Game_Scene;
 using UnityEngine;
-using UnityEngine.SceneManagement;
 
-namespace Course_Library.Scripts {
+namespace Game_Scene.UI {
     public class PauseMenu : MonoBehaviour {
-        [SerializeField] private GameObject pauseMenu;
-
-        private void Awake() {
-            pauseMenu.SetActive(false);
-        }
-
-        private void Update() {
-            if (!Input.GetKeyDown(KeyCode.Escape)) return;
-            if (GameStateManager.Instance.CurrentGameState == GameState.PAUSED) {
-                Resume();
-            }
-            else {
-                Pause();
-            }
-        }
-
-        private void Pause() {
-            GameStateManager.Instance.Pause();
-            pauseMenu.SetActive(true);
-        }
-
-        public void Resume() {
+        public void ResumeButtonClick() {
             GameStateManager.Instance.Resume();
-            pauseMenu.SetActive(false);
+            this.gameObject.SetActive(false);
         }
 
-        public void Restart() {
+        public void RestartButtonClick() {
             GameStateManager.Instance.Restart();
         }
     }

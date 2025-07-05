@@ -1,4 +1,6 @@
+using System;
 using UnityEngine;
+using UnityEngine.Events;
 using UnityEngine.SceneManagement;
 
 namespace Game_Scene {
@@ -10,15 +12,26 @@ namespace Game_Scene {
 
     public class GameStateManager : MonoBehaviour {
         public static GameStateManager Instance { get; private set; }
+        
+        public GameState CurrentGameState { get; private set; } = GameState.PLAYING;
+
+        public static readonly UnityEvent OnGameOver = new ();
+        
+        public static readonly UnityEvent OnGamePaused = new ();
 
         public void Awake() {
             Instance = this;
             Time.timeScale = 1;
         }
 
-        public GameState CurrentGameState { get; private set; } = GameState.PLAYING;
-
-        public void Pause() {
+        private void Update() {
+            if (!Input.GetKeyDown(KeyCode.Escape)) return;
+            
+            Pause();
+            OnGamePaused.Invoke();
+        }
+        
+        private void Pause() {
             if (CurrentGameState != GameState.PLAYING) return;
             Time.timeScale = 0;
             CurrentGameState = GameState.PAUSED;
