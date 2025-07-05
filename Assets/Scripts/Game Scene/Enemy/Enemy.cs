@@ -28,9 +28,10 @@ namespace Game_Scene.Enemy {
         }
         
         private void DestroyPlayerIfOutOfBounds() {
-            if (this.transform.position.y < -10) {
-                this.SpawnManager.DespawnObject(_indexAtPooler);
-            }
+            if (!(this.transform.position.y < -10)) return;
+            
+            this.transform.position.Set(0, 0, 0);
+            this.Despawn();
         }
     }
 }

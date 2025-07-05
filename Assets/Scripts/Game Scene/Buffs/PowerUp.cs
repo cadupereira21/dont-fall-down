@@ -1,8 +1,9 @@
+using Game_Scene.ObjectPooling;
 using UnityEngine;
 
 namespace Game_Scene.Buffs {
-    public abstract class PowerUp : MonoBehaviour {
-        private const string TagPlayer = "Player";
+    public abstract class PowerUp : PooledObject {
+        private const string TAG_PLAYER = "Player";
         
         protected float Duration;
 
@@ -10,17 +11,13 @@ namespace Game_Scene.Buffs {
         public float GetDuration => Duration;
 
         protected void Start() {
-            this.Invoke(nameof(DestroyPowerUp), DestroyTimeInSeconds);
+            this.Invoke(nameof(this.Despawn), DestroyTimeInSeconds);
         }
 
         protected void OnTriggerEnter(Collider other) {
-            if (other.gameObject.CompareTag(TagPlayer)) {
-                Destroy(this.gameObject);
+            if (other.gameObject.CompareTag(TAG_PLAYER)) {
+                this.Despawn();
             }       
-        }
-        
-        private void DestroyPowerUp() {
-            Destroy(this.gameObject);
         }
     }
 }

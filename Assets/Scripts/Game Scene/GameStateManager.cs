@@ -54,6 +54,7 @@ namespace Game_Scene {
             if (CurrentGameState != GameState.PLAYING) return;
             Time.timeScale = 0;
             CurrentGameState = GameState.GAME_OVER;
+            OnGameOver.Invoke();
         }
     }
 }

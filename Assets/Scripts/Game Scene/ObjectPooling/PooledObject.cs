@@ -11,5 +11,9 @@ namespace Game_Scene.ObjectPooling {
             SpawnManager = spawnManager;
             IndexAtPooler = indexAtPooler;
         }
+
+        protected void Despawn() {
+            SpawnManager.DespawnObject(IndexAtPooler);
+        }
     }
 }
