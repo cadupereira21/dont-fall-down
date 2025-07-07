@@ -1,5 +1,4 @@
-﻿using System;
-using UnityEngine;
+﻿using UnityEngine;
 
 namespace Game_Scene.UI {
     public class GameUiManager : MonoBehaviour {

@@ -1,5 +1,4 @@
-﻿using System;
-using Game_Scene.Enemy.Spawn;
+﻿using Game_Scene.Enemy.Spawn;
 using TMPro;
 using UnityEngine;
 

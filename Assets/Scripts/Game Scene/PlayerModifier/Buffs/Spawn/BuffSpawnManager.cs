@@ -3,7 +3,7 @@ using Game_Scene.ObjectPooling.Strategy.Attributes;
 using Game_Scene.ObjectPooling.Strategy.SpawnPosition;
 using UnityEngine;
 
-namespace Game_Scene.Buffs.Spawn {  
+namespace Game_Scene.PlayerModifier.Buffs.Spawn {  
     public class BuffSpawnManager : SpawnManager {
         [Header("Spawn Settings")]
         [SerializeField] 

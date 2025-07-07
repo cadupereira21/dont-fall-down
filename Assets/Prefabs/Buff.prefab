@@ -14,8 +14,8 @@ GameObject:
   - component: {fileID: 1714473550747279400}
   - component: {fileID: 1424561358817088935}
   m_Layer: 0
-  m_Name: PowerUp
-  m_TagString: PowerUp
+  m_Name: Buff
+  m_TagString: Buff
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -60,6 +60,9 @@ MeshRenderer:
   m_ReflectionProbeUsage: 1
   m_RayTracingMode: 2
   m_RayTraceProcedural: 0
+  m_RayTracingAccelStructBuildFlagsOverride: 0
+  m_RayTracingAccelStructBuildFlags: 1
+  m_SmallMeshCulling: 1
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -118,4 +121,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d72bce8c0b46461f949bf77c5480a53f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  knockBackStrength: 10
+  knockbackStrength: 11
+  modifierSo: {fileID: 11400000, guid: 23a30a08182991547bd85e36edea188d, type: 2}

@@ -1,5 +1,4 @@
-﻿using System;
-using UnityEngine;
+﻿using UnityEngine;
 
 namespace Game_Scene.Player {
     public class Player : MonoBehaviour {

@@ -1,7 +1,7 @@
 using UnityEngine;
 
-namespace Game_Scene.Buffs {
-    public class PowerUpIndicator : MonoBehaviour {
+namespace Game_Scene.PlayerModifier.Buffs {
+    public class BuffIndicator : MonoBehaviour {
         [SerializeField] private Transform playerTransform;
 
         private void Update() {

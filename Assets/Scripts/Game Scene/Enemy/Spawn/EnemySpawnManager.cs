@@ -49,7 +49,7 @@ namespace Game_Scene.Enemy.Spawn {
         private void SpawnEnemy() {
             ObjectPoolerDto objectPoolerDto = this.SpawnObject();
             
-            if (!objectPoolerDto.Obj.TryGetComponent(out Enemy enemyController)) return;
+            if (!objectPoolerDto.Obj.TryGetComponent(out Game_Scene.Enemy.Enemy enemyController)) return;
             
             enemyController.Init(player, this, objectPoolerDto.IndexAtPooler);
             enemyController.transform.position = _spawnPositionStrategy.GetPosition();

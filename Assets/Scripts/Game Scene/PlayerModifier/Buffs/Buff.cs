@@ -1,17 +1,19 @@
 using Game_Scene.ObjectPooling;
 using UnityEngine;
 
-namespace Game_Scene.Buffs {
-    public abstract class PowerUp : PooledObject {
+namespace Game_Scene.PlayerModifier.Buffs {
+    public abstract class Buff : PooledObject {
+        
         private const string TAG_PLAYER = "Player";
         
         protected float Duration;
 
-        protected float DestroyTimeInSeconds;
+        protected float SpawnDuration;
+        
         public float GetDuration => Duration;
 
         protected void Start() {
-            this.Invoke(nameof(this.Despawn), DestroyTimeInSeconds);
+            this.Invoke(nameof(this.Despawn), SpawnDuration);
         }
 
         protected void OnTriggerEnter(Collider other) {
