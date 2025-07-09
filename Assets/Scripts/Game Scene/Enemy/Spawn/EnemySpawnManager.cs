@@ -7,27 +7,13 @@ using UnityEngine.Events;
 namespace Game_Scene.Enemy.Spawn {
     public class EnemySpawnManager : SpawnManager {
         
-        [Header("Spawn Settings")]
-        [SerializeField]
-        private SpawnPosition spawnPosition;
-        
-        [SerializeField]
-        private SpawnPositionAttributeSo spawnPositionAttributes;
-
         [Header("Enemy Settings")] 
         [SerializeField]
         private GameObject player;
-        
-        private SpawnPositionStrategy _spawnPositionStrategy;
 
         private int _wave = 1;
         
         public static readonly UnityEvent<int> OnNewWaveSpawned = new ();
-
-        private new void Awake() {
-            _spawnPositionStrategy = SpawnPositionStrategyFactory.GetStrategy(spawnPosition, spawnPositionAttributes);
-            base.Awake();
-        }
 
         private void Start() {
             SpawnEnemyWave(_wave);
@@ -49,10 +35,10 @@ namespace Game_Scene.Enemy.Spawn {
         private void SpawnEnemy() {
             ObjectPoolerDto objectPoolerDto = this.SpawnObject();
             
-            if (!objectPoolerDto.Obj.TryGetComponent(out Game_Scene.Enemy.Enemy enemyController)) return;
+            if (!objectPoolerDto.Obj.TryGetComponent(out Enemy enemyController)) return;
             
             enemyController.Init(player, this, objectPoolerDto.IndexAtPooler);
-            enemyController.transform.position = _spawnPositionStrategy.GetPosition();
+            enemyController.transform.position = this.GetSpawnPosition();
         }
     }
 }

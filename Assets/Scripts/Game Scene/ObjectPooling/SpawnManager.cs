@@ -1,4 +1,6 @@
-﻿using UnityEngine;
+﻿using Game_Scene.ObjectPooling.Strategy.Attributes;
+using Game_Scene.ObjectPooling.Strategy.SpawnPosition;
+using UnityEngine;
 
 namespace Game_Scene.ObjectPooling {
     public abstract class SpawnManager : MonoBehaviour {
@@ -18,12 +20,26 @@ namespace Game_Scene.ObjectPooling {
         [SerializeField]
         protected int maxSize;
         
+        [Header("Spawn Settings")]
+        [SerializeField] 
+        private SpawnPosition spawnPosition;
+        
+        [SerializeField]
+        private SpawnPositionAttributeSo spawnPositionAttributes;
+        
+        private SpawnPositionStrategy _spawnPositionStrategy;
+        
         private ObjectPooler _objectPooler;
         
         protected int CountActive => _objectPooler.CountActive;
 
         protected void Awake() {
+            _spawnPositionStrategy = SpawnPositionStrategyFactory.GetStrategy(spawnPosition, spawnPositionAttributes);
             _objectPooler = new ObjectPooler(prefab, defaultSize, maxSize, this.gameObject);
+        }
+
+        protected Vector3 GetSpawnPosition() {
+            return _spawnPositionStrategy.GetPosition();
         }
 
         protected void SpawnObject(Vector3 position) {
