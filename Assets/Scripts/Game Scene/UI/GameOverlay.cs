@@ -29,5 +29,9 @@ namespace Game_Scene.UI {
         private void SetWaveText(int wave) {
             waveText.text = $"WAVE: {wave.ToString()}";
         }
+
+        public void OnPauseButtonClick() {
+            GameStateManager.Instance.Pause();
+        }
     }
 }
