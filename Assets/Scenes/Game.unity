@@ -676,7 +676,6 @@ Transform:
   m_Children:
   - {fileID: 749746686}
   - {fileID: 1088493672}
-  - {fileID: 674430755}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &292145857
@@ -1100,7 +1099,7 @@ GameObject:
   - component: {fileID: 674430755}
   - component: {fileID: 674430756}
   m_Layer: 0
-  m_Name: CameraFocalPoint
+  m_Name: Camera Focal Point
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1114,13 +1113,13 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 674430754}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1211419928}
-  m_Father: {fileID: 269963921}
+  m_Father: {fileID: 2027043482}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &674430756
 MonoBehaviour:
@@ -1134,7 +1133,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0db930a062aa439479254af00d8bc874, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  rotationSpeed: 60
+  rotationSpeed: 50
 --- !u!1 &681012099
 GameObject:
   m_ObjectHideFlags: 0
@@ -2309,7 +2308,7 @@ Camera:
   far clip plane: 1000
   field of view: 60
   orthographic: 1
-  orthographic size: 13
+  orthographic size: 18
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
@@ -2333,13 +2332,13 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1211419925}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.2588191, y: -0, z: -0, w: 0.9659258}
+  m_LocalRotation: {x: 0.30070576, y: 0, z: 0, w: 0.953717}
   m_LocalPosition: {x: 0, y: 10, z: -20}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 674430755}
-  m_LocalEulerAnglesHint: {x: 30, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 35, y: 0, z: 0}
 --- !u!82 &1211419929
 AudioSource:
   m_ObjectHideFlags: 0
@@ -2744,8 +2743,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a542ca6500d5e4244a44bd6e264a7354, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerSpeed: 550
-  focalPoint: {fileID: 674430754}
+  acceleration: 1000
+  maxSpeed: 5
+  focalPoint: {fileID: 1211419925}
 --- !u!82 &1442613732
 AudioSource:
   m_ObjectHideFlags: 0
@@ -3446,6 +3446,38 @@ Transform:
   - {fileID: 1403545345}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &2027043481
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2027043482}
+  m_Layer: 0
+  m_Name: CAMERA
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2027043482
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2027043481}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 674430755}
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &2107823039
 GameObject:
   m_ObjectHideFlags: 0
@@ -3634,3 +3666,4 @@ SceneRoots:
   - {fileID: 1965393239}
   - {fileID: 1523231831}
   - {fileID: 269963921}
+  - {fileID: 2027043482}
