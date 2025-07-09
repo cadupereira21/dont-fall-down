@@ -3,13 +3,14 @@ using UnityEngine;
 
 namespace Game_Scene.Enemy {
     public class Enemy : PooledObject {
+        
+        [SerializeField]
+        [Range(150, 450)]
+        private float enemySpeed = 300;
+        
         private GameObject _player;
 
         private Rigidbody _enemyRb;
-        
-        private int _indexAtPooler;
-
-        public float enemySpeed;
 
         public void Init(GameObject player, SpawnManager spawnManager, int indexAtPooler) {
             _player = player;
@@ -24,10 +25,10 @@ namespace Game_Scene.Enemy {
             _enemyRb.AddForce((_player.transform.position - this.transform.position).normalized * (enemySpeed * Time.deltaTime),
                              ForceMode.Force);
             
-            DestroyPlayerIfOutOfBounds();
+            DespawnIfOutOfBounds();
         }
         
-        private void DestroyPlayerIfOutOfBounds() {
+        private void DespawnIfOutOfBounds() {
             if (!(this.transform.position.y < -10)) return;
             
             this.transform.position.Set(0, 0, 0);
