@@ -22,18 +22,12 @@ namespace Game_Scene {
             Instance = this;
             Time.timeScale = 1;
         }
-
-        private void Update() {
-            if (!Input.GetKeyDown(KeyCode.Escape)) return;
-            
-            Pause();
-            OnGamePaused.Invoke();
-        }
         
-        private void Pause() {
+        public void Pause() {
             if (CurrentGameState != GameState.PLAYING) return;
             Time.timeScale = 0;
             CurrentGameState = GameState.PAUSED;
+            OnGamePaused.Invoke();
         }
 
         public void Resume() {
