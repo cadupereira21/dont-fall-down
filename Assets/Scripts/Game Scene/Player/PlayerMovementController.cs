@@ -1,8 +1,18 @@
+using System;
 using UnityEngine;
+using UnityEngine.UI;
 
 namespace Game_Scene.Player {
     public class PlayerMovementController : MonoBehaviour {
         
+        [Header("Movement buttons")]
+        [SerializeField]
+        private MovementButton moveForwardButton;
+        
+        [SerializeField]
+        private MovementButton moveBackwardButton;
+        
+        [Header("Movement settings")]
         [SerializeField]
         [Range(300, 1500)]
         private float acceleration = 1000;
@@ -23,10 +33,23 @@ namespace Game_Scene.Player {
         }
 
         private void Update() {
-            Vector3 directionToFocal = (this.transform.position - focalPoint.transform.position).normalized;
+            if (moveForwardButton.isPressed) MoveForwardButtonClick();
+            if (moveBackwardButton.isPressed) MoveBackwardButtonClick();
+        }
+
+        private void Move(int direction) {
+            Vector3 directionToFocal = (this.transform.position - focalPoint.transform.position).normalized * direction;
             
-            _playerRb.AddForce(new Vector3(-directionToFocal.x, 0, -directionToFocal.z) * (acceleration * Time.deltaTime),
+            _playerRb.AddForce(new Vector3(directionToFocal.x, 0, directionToFocal.z) * (acceleration * Time.deltaTime),
                                ForceMode.Force);
+        }
+
+        private void MoveForwardButtonClick() {
+            Move(1);
+        }
+        
+        private void MoveBackwardButtonClick() {
+            Move(-1);
         }
     }
 }
