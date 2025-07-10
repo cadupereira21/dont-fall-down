@@ -1133,7 +1133,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0db930a062aa439479254af00d8bc874, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  rotationSpeed: 50
+  rotationSpeed: 7
 --- !u!1 &681012099
 GameObject:
   m_ObjectHideFlags: 0
@@ -2856,9 +2856,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   buffSfx: {fileID: 8300000, guid: 4bc21899eae7448ccaf4ebdd49cfcd9f, type: 3}
-  buffSfxVolume: 1.4
+  buffSfxVolume: 1.2
   bumpSfx: {fileID: 8300000, guid: 02f98902d77f7431cb0c64b9fe4744fc, type: 3}
-  bumpSfxVolume: 1.5
+  bumpSfxVolume: 1
 --- !u!114 &1442613734
 MonoBehaviour:
   m_ObjectHideFlags: 0
