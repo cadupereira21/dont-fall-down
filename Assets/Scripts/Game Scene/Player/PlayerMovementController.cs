@@ -32,7 +32,7 @@ namespace Game_Scene.Player {
             _playerRb.maxLinearVelocity = maxSpeed;
         }
 
-        private void Update() {
+        private void FixedUpdate() {
             if (moveForwardButton.isPressed) MoveForwardButtonClick();
             if (moveBackwardButton.isPressed) MoveBackwardButtonClick();
         }
