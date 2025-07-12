@@ -4,14 +4,6 @@ using UnityEngine.UI;
 
 namespace Game_Scene.Player {
     public class PlayerMovementController : MonoBehaviour {
-        
-        [Header("Movement buttons")]
-        [SerializeField]
-        private MovementButton moveForwardButton;
-        
-        [SerializeField]
-        private MovementButton moveBackwardButton;
-        
         [Header("Movement settings")]
         [SerializeField]
         [Range(300, 1500)]
@@ -27,14 +19,27 @@ namespace Game_Scene.Player {
 
         private Rigidbody _playerRb;
 
+        private float _screenHeight;
+
+        private void Awake() {
+            _screenHeight = Screen.height;
+        }
+
         private void Start() {
             _playerRb = this.GetComponent<Rigidbody>();
             _playerRb.maxLinearVelocity = maxSpeed;
         }
 
-        private void FixedUpdate() {
-            if (moveForwardButton.isPressed) MoveForwardButtonClick();
-            if (moveBackwardButton.isPressed) MoveBackwardButtonClick();
+        private void Update() {
+            if (Input.touchCount > 0) {
+                Touch touch = Input.GetTouch(0);
+                
+                if (touch.position.y < _screenHeight / 2) {
+                    MoveBackwardButtonClick();
+                } else {
+                    MoveForwardButtonClick();
+                }
+            }
         }
 
         private void Move(int direction) {
