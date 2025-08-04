@@ -7,7 +7,8 @@ namespace UI.LevelSelector {
     [RequireComponent(typeof(Button), typeof(Outline))]
     public class LevelButton : MonoBehaviour {
         
-        [SerializeField] private TextMeshProUGUI levelNameText;
+        [SerializeField] private TextMeshProUGUI levelNameTextTMP;
+        [SerializeField] private TextMeshProUGUI levelNumberTextTMP;
         [SerializeField] private GameObject lockedIcon;
         [SerializeField] private Image levelImage;
         
@@ -27,8 +28,9 @@ namespace UI.LevelSelector {
             _levelIndex = index;
             _levelSceneName = levelSceneName;
             _isLocked = isLocked;
-            
-            levelNameText.text = $"{index+1}. {levelName}";
+
+            levelNameTextTMP.text = levelName;
+            levelNumberTextTMP.text = (index + 1).ToString();
             lockedIcon.SetActive(isLocked);
             levelImage.sprite = levelImageSprite;
         }

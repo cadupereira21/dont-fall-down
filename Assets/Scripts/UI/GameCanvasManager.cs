@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 
 namespace UI {
-    public class GameUiManager : MonoBehaviour {
+    public class GameCanvasManager : MonoBehaviour {
         
         [SerializeField]
         private GameOverlay gameOverlay;
